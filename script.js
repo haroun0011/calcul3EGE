@@ -1,6 +1,3 @@
-/* ============================================================
-   CONFIGURATION — Paste your Google Apps Script URL here
-   ============================================================ */
 const GAS_URL = 'https://script.google.com/macros/s/AKfycbxOF7rns1SmVdfGrjw7C6wvcU3H33xG71XmXSeh5p2vX9svR-7rl9GmwHIFLr0xQ6JMmw/exec';
 //  ^ Replace with your Web App URL after following SETUP_GUIDE.html
 //  Example: 'https://script.google.com/macros/s/AKfycb.../exec'
