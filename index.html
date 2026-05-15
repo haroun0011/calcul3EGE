@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>حاسبة المعدل الجامعي - L3 Gestion des Entreprises</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- ===== NAME GATE OVERLAY ===== -->
+    <div id="nameGate" class="gate-overlay">
+        <div class="gate-card">
+            <div class="gate-logo">🎓</div>
+            <h2 class="gate-title">حاسبة المعدل الجامعي</h2>
+            <p class="gate-subtitle">L3 — Gestion des Entreprises</p>
+            <p class="gate-hint">أدخل اسمك للمتابعة</p>
+            <div class="gate-input-wrap">
+                <input
+                    type="text"
+                    id="nameInput"
+                    class="gate-input"
+                    placeholder="اكتب اسمك هنا..."
+                    maxlength="60"
+                    autocomplete="off"
+                    dir="auto"
+                />
+            </div>
+            <button id="enterBtn" class="gate-btn" onclick="enterSite()">دخول ←</button>
+            <p id="gateError" class="gate-error" style="display:none;">الرجاء كتابة اسمك أولاً ✋</p>
+        </div>
+    </div>
+
+    <!-- ===== ADMIN PANEL OVERLAY ===== -->
+    <div id="adminPanel" class="admin-overlay" style="display:none;">
+        <div class="admin-card">
+            <div class="admin-header">
+                <h2>👁 سجل الزوار</h2>
+                <button class="admin-close" onclick="closeAdmin()">✕</button>
+            </div>
+            <div class="admin-stats-row">
+                <span id="adminTotal" class="admin-stat-badge">إجمالي: 0</span>
+                <button class="admin-clear-btn" onclick="clearVisitors()">🗑 مسح الكل</button>
+            </div>
+            <div class="admin-table-wrap">
+                <table class="admin-table" id="adminTable">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>الاسم</th>
+                            <th>التاريخ والوقت</th>
+                        </tr>
+                    </thead>
+                    <tbody id="adminTbody"></tbody>
+                </table>
+                <p id="adminEmpty" class="admin-empty" style="display:none;">لا يوجد زوار بعد</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== MAIN APP ===== -->
+    <div class="container" id="mainApp" style="display:none;">
+        <header>
+            <h1>حاسبة المعدل الجامعي</h1>
+            <div class="student-name">by Mouslim</div>
+            <div class="info">
+                <p><strong>المستوى:</strong> السنة الثالثة (L3)</p>
+                <p><strong>التخصص:</strong> Gestion des Entreprises (تسيير مؤسسات)</p>
+            </div>
+            <!-- Admin trigger: click the logo emoji 5 times -->
+            <div id="adminTrigger" class="admin-trigger" title="admin" onclick="handleAdminTap()">⚙</div>
+        </header>
+
+        <div class="semester-tabs">
+            <button class="tab-button active" data-semester="S1">الفصل الأول (S1)</button>
+            <button class="tab-button" data-semester="S2">الفصل الثاني (S2)</button>
+        </div>
+
+        <div class="semester-content" id="S1">
+            <div class="subjects-container" id="subjects-S1"></div>
+            <div class="semester-summary">
+                <h3>ملخص الفصل الأول</h3>
+                <div class="summary-stats">
+                    <div class="stat">
+                        <span class="label">المعدل:</span>
+                        <span class="value" id="average-S1">-</span>
+                    </div>
+                    <div class="stat">
+                        <span class="label">المواد الناجحة:</span>
+                        <span class="value" id="passed-S1">0</span>
+                    </div>
+                    <div class="stat">
+                        <span class="label">المواد الراسبة:</span>
+                        <span class="value" id="failed-S1">0</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="semester-content" id="S2" style="display: none;">
+            <div class="subjects-container" id="subjects-S2"></div>
+            <div class="semester-summary">
+                <h3>ملخص الفصل الثاني</h3>
+                <div class="summary-stats">
+                    <div class="stat">
+                        <span class="label">المعدل:</span>
+                        <span class="value" id="average-S2">-</span>
+                    </div>
+                    <div class="stat">
+                        <span class="label">المواد الناجحة:</span>
+                        <span class="value" id="passed-S2">0</span>
+                    </div>
+                    <div class="stat">
+                        <span class="label">المواد الراسبة:</span>
+                        <span class="value" id="failed-S2">0</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="overall-summary">
+            <h2>المعدل العام</h2>
+            <div class="overall-average" id="overallAverage">-</div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
